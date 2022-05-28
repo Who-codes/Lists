@@ -39,8 +39,10 @@ function App() {
             <button className="submit-btn">{isEditing ? "edit" : "add"}</button>
           </div>
         </form>
-        <Lists list={list} />
-        <button className="clear-btn">clear list</button>
+        <div className="grocery-container">
+          <Lists list={list} />
+          <button className="clear-btn">clear list</button>
+        </div>
       </div>
     </section>
   );
