@@ -37,7 +37,7 @@ function App() {
       setName("");
       setEditing(false);
       setEditId(null);
-      showAlert(true, "vslue changed", "success");
+      showAlert(true, "value changed", "success");
     } else {
       showAlert(true, "item added successfully", "success");
       const newList = { id: new Date().getTime().toString(), title: name };
