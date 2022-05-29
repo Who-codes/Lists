@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Alert from "./Alert";
 import Lists from "./List";
 
+const getlocalStorage = () => {
+  let list = localStorage.getItem("list");
+  if (list) {
+    return JSON.parse(list);
+  } else {
+    return [];
+  }
+};
+
 function App() {
   const [name, setName] = useState("");
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(getlocalStorage());
   const [isEditing, setEditing] = useState(false);
   const [editId, setEditId] = useState(null);
   const [alert, setAlert] = useState({ show: false, msg: "", type: "" });
@@ -56,6 +65,10 @@ function App() {
   const removeItem = (id) => {
     setList(list.filter((item) => item.id !== id));
   };
+
+  useEffect(() => {
+    localStorage.setItem("list", JSON.stringify(list));
+  }, [list]);
 
   return (
     <section className="section-center">
